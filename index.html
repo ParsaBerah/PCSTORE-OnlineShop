@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>وب‌سایت فروشگاهی مدرن</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Font Awesome برای آیکون‌ها -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- فونت Vazir برای طراحی مدرن -->
+    <link href="https://cdn.jsdelivr.net/npm/vazir-font@31.0.2/dist/font-face.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="files/logo.png" alt="لوگو" />
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="جستجو..." />
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+      <nav>
+        <div class="hamburger">☰</div>
+        <ul class="nav-menu">
+          <li><a href="#">خانه</a></li>
+          <li><a href="#">دسته‌بندی</a></li>
+          <li><a href="#">سبد خرید</a></li>
+          <li><a href="#">ورود</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="slider">
+        <div class="slide" data-slide="0">
+          <img src="files/slide1.webp" alt="اسلاید 1" loading="lazy" />
+        </div>
+        <div class="slide" data-slide="1">
+          <img src="files/slide2.webp" alt="اسلاید 2" loading="lazy" />
+        </div>
+        <div class="slide" data-slide="2">
+          <img src="files/slide3.webp" alt="اسلاید 3" loading="lazy" />
+        </div>
+        <div class="slider-dots">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
+        </div>
+      </section>
+
+      <section class="featured-products">
+        <h2>محصولات</h2>
+        <div class="product-grid">
+          <div class="product-card">
+            <img src="files/laptop1.png" alt="محصول 1" loading="lazy" />
+            <div class="product-info">
+              <h3>محصول 1</h3>
+              <span class="price">1,200,000 تومان</span>
+              <div class="product-actions">
+                <button class="add-to-cart"><i class="fas fa-cart-plus"></i> افزودن</button>
+                <button class="quick-view"><i class="fas fa-eye"></i> مشاهده</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="files/laptop1.png" alt="محصول 2" loading="lazy" />
+            <div class="product-info">
+              <h3>محصول 2</h3>
+              <span class="price">1,500,000 تومان</span>
+              <div class="product-actions">
+                <button class="add-to-cart"><i class="fas fa-cart-plus"></i> افزودن</button>
+                <button class="quick-view"><i class="fas fa-eye"></i> مشاهده</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="files/laptop1.png" alt="محصول 3" loading="lazy" />
+            <div class="product-info">
+              <h3>محصول 3</h3>
+              <span class="price">900,000 تومان</span>
+              <div class="product-actions">
+                <button class="add-to-cart"><i class="fas fa-cart-plus"></i> افزودن</button>
+                <button class="quick-view"><i class="fas fa-eye"></i> مشاهده</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="files/laptop1.png" alt="محصول 4" loading="lazy" />
+            <div class="product-info">
+              <h3>محصول 4</h3>
+              <span class="price">2,000,000 تومان</span>
+              <div class="product-actions">
+                <button class="add-to-cart"><i class="fas fa-cart-plus"></i> افزودن</button>
+                <button class="quick-view"><i class="fas fa-eye"></i> مشاهده</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>© 2023</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
