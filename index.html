@@ -1,105 +1,204 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>وب‌سایت فروشگاهی مدرن</title>
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Font Awesome برای آیکون‌ها -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <title>وب‌سایت فروشگاهی مدرن - نسخه وب</title>
+    <!-- لینک Tailwind CSS با CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- فونت Vazir برای طراحی مدرن -->
     <link href="https://cdn.jsdelivr.net/npm/vazir-font@31.0.2/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome برای آیکون‌ها -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- تعریف رنگ‌های سفارشی در Tailwind -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'blue-warm': '#4a90e2',
+              'blue-dark': '#357abd',
+              'blue-light': '#74b9ff',
+              'dark-bg': '#1a2a3a',
+              'dark-secondary': '#2c3e50',
+            },
+            backdropBlur: {
+              '10xl': '10px',
+            },
+            boxShadow: {
+              'glass': '0 3px 10px rgba(0, 0, 0, 0.1)',
+              'glass-hover': '0 5px 15px rgba(0, 0, 0, 0.2)',
+            },
+          },
+        },
+      };
+    </script>
   </head>
-  <body>
-    <header>
+  <body class="bg-gradient-to-br from-blue-100 to-blue-300 text-gray-800 font-vazir min-h-screen overflow-x-hidden dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <header class="sticky top-0 z-50 bg-blue-500/70 backdrop-blur-[10px] p-6 flex justify-between items-center shadow-md dark:bg-gray-800/70">
       <div class="logo">
-        <img src="files/logo.png" alt="لوگو" />
+        <img src="files/logo.png" alt="لوگو" class="h-12 rounded-2xl transition-transform duration-300 hover:scale-105" />
       </div>
-      <div class="search-bar">
-        <input type="text" placeholder="جستجو..." />
-        <button type="submit"><i class="fas fa-search"></i></button>
+      <div class="search-bar flex-1 mx-10 relative max-w-3xl">
+        <input type="text" placeholder="جستجو..." class="w-full p-4 border-none rounded-l-3xl bg-white/95 text-gray-800 mr-15 font-medium text-lg backdrop-blur-[10px] shadow-glass transition-all duration-300 focus:outline-none focus:shadow-blue-500/60 focus:bg-white/98 dark:bg-gray-700/95 dark:text-gray-200 dark:shadow-blue-500/40" />
+        <button type="submit" class="bg-gradient-to-br from-blue-warm to-blue-dark text-white p-4 rounded-r-3xl cursor-pointer absolute right-0 top-0 bottom-0 flex items-center justify-center transition-all duration-300 hover:from-blue-dark hover:to-blue-700 hover:scale-105 hover:shadow-glass-hover dark:from-blue-light dark:to-blue-600">
+          <i class="fas fa-search text-xl"></i>
+        </button>
       </div>
-      <nav>
-        <div class="hamburger">☰</div>
-        <ul class="nav-menu">
-          <li><a href="#">خانه</a></li>
-          <li><a href="#">دسته‌بندی</a></li>
-          <li><a href="#">سبد خرید</a></li>
-          <li><a href="#">ورود</a></li>
+      <nav class="flex items-center gap-4">
+        <div class="mode-toggle">
+          <label class="mode-switch">
+            <input type="checkbox" id="modeToggle" class="hidden" />
+            <span class="mode-slider flex items-center justify-between w-15 h-7 bg-white/30 rounded-2xl cursor-pointer backdrop-blur-[10px] border border-blue-500/40 shadow-glass transition-all duration-300 dark:bg-gray-700/30 dark:border-blue-500/20">
+              <i class="fas fa-sun text-base text-blue-warm absolute left-1 transition-transform duration-300"></i>
+              <i class="fas fa-moon text-base text-blue-warm absolute right-1 transition-transform duration-300"></i>
+            </span>
+          </label>
+        </div>
+        <div class="hamburger hidden md:hidden text-2xl text-white cursor-pointer transition-colors duration-300 hover:text-blue-light" id="hamburger">☰</div>
+        <ul class="nav-menu flex items-center md:flex-row md:static md:bg-transparent md:backdrop-blur-none md:p-0 md:w-auto md:h-auto md:shadow-none md:rounded-none absolute top-0 left-[-250px] w-64 h-screen bg-blue-500/90 backdrop-blur-[8px] p-6 rounded-r-2xl shadow-2xl flex-col items-start z-50 dark:bg-gray-800/90">
+          <li class="mb-4 w-full"><a href="#" class="text-white font-semibold text-lg flex items-center gap-1.5 px-4 py-2 rounded-xl transition-all duration-300 hover:text-blue-light hover:translate-x-1.25 hover:bg-white/10 dark:text-gray-200"><i class="fas fa-home"></i> خانه</a></li>
+          <li class="mb-4 w-full"><a href="#" class="text-white font-semibold text-lg flex items-center gap-1.5 px-4 py-2 rounded-xl transition-all duration-300 hover:text-blue-light hover:translate-x-1.25 hover:bg-white/10 dark:text-gray-200"><i class="fas fa-th-large"></i> دسته‌بندی</a></li>
+          <li class="mb-4 w-full"><a href="#" id="cart-icon" class="text-white font-semibold text-lg flex items-center gap-1.5 px-4 py-2 rounded-xl transition-all duration-300 hover:text-blue-light hover:translate-x-1.25 hover:bg-white/10 dark:text-gray-200"><i class="fas fa-shopping-cart"></i> سبد خرید</a></li>
+          <li class="w-full"><a href="#" class="text-white font-semibold text-lg flex items-center gap-1.5 px-4 py-2 rounded-xl transition-all duration-300 hover:text-blue-light hover:translate-x-1.25 hover:bg-white/10 dark:text-gray-200"><i class="fas fa-user"></i> ورود</a></li>
         </ul>
       </nav>
     </header>
     <main>
-      <section class="slider">
-        <div class="slide" data-slide="0">
-          <img src="files/slide1.webp" alt="اسلاید 1" loading="lazy" />
+      <section class="slider relative w-full h-[600px] overflow-hidden bg-white/25 backdrop-blur-[10px] rounded-3xl mx-auto max-w-7xl shadow-glass mt-10 dark:bg-gray-800/25">
+        <div class="slide absolute w-full h-full opacity-0 transition-all duration-700 ease-in-out" data-slide="0">
+          <img src="files/slide1.webp" alt="اسلاید 1" class="w-full h-full object-cover" loading="lazy" />
         </div>
-        <div class="slide" data-slide="1">
-          <img src="files/slide2.webp" alt="اسلاید 2" loading="lazy" />
+        <div class="slide absolute w-full h-full opacity-0 transition-all duration-700 ease-in-out" data-slide="1">
+          <img src="files/slide2.webp" alt="اسلاید 2" class="w-full h-full object-cover" loading="lazy" />
         </div>
-        <div class="slide" data-slide="2">
-          <img src="files/slide3.webp" alt="اسلاید 3" loading="lazy" />
+        <div class="slide absolute w-full h-full opacity-0 transition-all duration-700 ease-in-out" data-slide="2">
+          <img src="files/slide3.webp" alt="اسلاید 3" class="w-full h-full object-cover" loading="lazy" />
         </div>
-        <div class="slider-dots">
-          <span class="dot active" data-slide="0"></span>
-          <span class="dot" data-slide="1"></span>
-          <span class="dot" data-slide="2"></span>
+        <div class="slider-dots absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-4">
+          <span class="dot w-3 h-3 bg-white/70 rounded-full cursor-pointer transition-all duration-300 hover:bg-white hover:scale-110 active:bg-blue-warm active:scale-130" data-slide="0"></span>
+          <span class="dot w-3 h-3 bg-white/70 rounded-full cursor-pointer transition-all duration-300 hover:bg-white hover:scale-110" data-slide="1"></span>
+          <span class="dot w-3 h-3 bg-white/70 rounded-full cursor-pointer transition-all duration-300 hover:bg-white hover:scale-110" data-slide="2"></span>
         </div>
       </section>
 
-      <section class="featured-products">
-        <h2>محصولات</h2>
-        <div class="product-grid">
-          <div class="product-card">
-            <img src="files/laptop1.png" alt="محصول 1" loading="lazy" />
-            <div class="product-info">
-              <h3>محصول 1</h3>
-              <span class="price">1,200,000 تومان</span>
-              <div class="product-actions">
-                <button class="add-to-cart"><i class="fas fa-cart-plus"></i> افزودن</button>
-                <button class="quick-view"><i class="fas fa-eye"></i> مشاهده</button>
+      <section class="categories py-12 max-w-7xl mx-auto border-t border-blue-500/30 border-b border-blue-500/30 dark:border-blue-500/20 dark:bg-gray-800/10">
+        <h2 class="text-center mb-8 text-4xl font-medium text-blue-dark text-shadow-md dark:text-blue-light transition-colors duration-300">دسته‌بندی‌ها</h2>
+        <div class="category-grid flex justify-center gap-8 flex-wrap">
+          <button class="category-btn bg-white/35 backdrop-blur-[10px] text-gray-800 border border-blue-500/40 p-3 px-8 rounded-3xl cursor-pointer text-xl flex items-center gap-1.5 transition-all duration-400 hover:bg-blue-500/70 hover:text-white hover:scale-105 hover:shadow-glass-hover active:bg-blue-600 dark:bg-gray-700/35 dark:text-gray-200 dark:border-blue-500/20 dark:hover:bg-blue-500/50" data-category="electronics"><i class="fas fa-laptop text-2xl text-blue-warm"></i> الکترونیک</button>
+          <button class="category-btn bg-white/35 backdrop-blur-[10px] text-gray-800 border border-blue-500/40 p-3 px-8 rounded-3xl cursor-pointer text-xl flex items-center gap-1.5 transition-all duration-400 hover:bg-blue-500/70 hover:text-white hover:scale-105 hover:shadow-glass-hover active:bg-blue-600 dark:bg-gray-700/35 dark:text-gray-200 dark:border-blue-500/20 dark:hover:bg-blue-500/50" data-category="clothing"><i class="fas fa-tshirt text-2xl text-blue-warm"></i> پوشاک</button>
+          <button class="category-btn bg-white/35 backdrop-blur-[10px] text-gray-800 border border-blue-500/40 p-3 px-8 rounded-3xl cursor-pointer text-xl flex items-center gap-1.5 transition-all duration-400 hover:bg-blue-500/70 hover:text-white hover:scale-105 hover:shadow-glass-hover active:bg-blue-600 dark:bg-gray-700/35 dark:text-gray-200 dark:border-blue-500/20 dark:hover:bg-blue-500/50" data-category="home"><i class="fas fa-couch text-2xl text-blue-warm"></i> خانه</button>
+          <button class="category-btn bg-white/35 backdrop-blur-[10px] text-gray-800 border border-blue-500/40 p-3 px-8 rounded-3xl cursor-pointer text-xl flex items-center gap-1.5 transition-all duration-400 hover:bg-blue-500/70 hover:text-white hover:scale-105 hover:shadow-glass-hover active:bg-blue-600 dark:bg-gray-700/35 dark:text-gray-200 dark:border-blue-500/20 dark:hover:bg-blue-500/50" data-category="sports"><i class="fas fa-dumbbell text-2xl text-blue-warm"></i> ورزش</button>
+        </div>
+      </section>
+
+      <section class="featured-products py-16 max-w-7xl mx-auto border-t border-blue-500/30 dark:border-blue-500/20 dark:bg-gray-800/10">
+        <h2 class="text-center mb-10 text-4xl font-medium text-blue-dark text-shadow-md dark:text-blue-light transition-colors duration-300">محصولات</h2>
+        <div class="product-grid grid grid-cols-4 gap-12">
+          <div class="product-card bg-white/35 backdrop-blur-[10px] rounded-2xl p-8 text-center border border-blue-500/40 transition-all duration-400 hover:translate-y-[-24px] hover:shadow-glass-hover dark:bg-gray-700/35 dark:border-blue-500/20" data-category="electronics">
+            <img src="files/laptop1.png" alt="محصول 1" class="w-full h-64 object-cover rounded-xl transition-transform duration-400 hover:scale-105" loading="lazy" />
+            <div class="product-info mt-6">
+              <h3 class="text-2xl font-medium text-blue-light dark:text-blue-light transition-colors duration-300">محصول 1</h3>
+              <span class="price block text-xl text-blue-warm font-semibold mt-4 dark:text-blue-light transition-colors duration-300">1,200,000 تومان</span>
+              <div class="product-actions flex gap-6 justify-center mt-6">
+                <button class="add-to-cart bg-gradient-to-br from-blue-warm to-blue-dark text-white p-3 px-6 rounded-3xl flex items-center gap-1.5 transition-all duration-400 hover:from-blue-dark hover:to-blue-700 hover:scale-106 hover:shadow-glass dark:from-blue-light dark:to-blue-600" data-product="1"><i class="fas fa-cart-plus"></i> افزودن</button>
+                <button class="quick-view bg-gradient-to-br from-blue-warm to-blue-dark text-white p-3 px-6 rounded-3xl flex items-center gap-1.5 transition-all duration-400 hover:from-blue-dark hover:to-blue-700 hover:scale-106 hover:shadow-glass dark:from-blue-light dark:to-blue-600"><i class="fas fa-eye"></i> مشاهده</button>
+              </div>
+              <div class="category-info flex items-center justify-end gap-1.5 text-blue-dark text-base mt-4 opacity-90 dark:text-blue-light transition-colors duration-300">
+                <i class="fas fa-laptop text-xl text-blue-warm dark:text-blue-light"></i>
+                <span>الکترونیک: گجت‌های پیشرفته</span>
               </div>
             </div>
           </div>
-          <div class="product-card">
-            <img src="files/laptop1.png" alt="محصول 2" loading="lazy" />
-            <div class="product-info">
-              <h3>محصول 2</h3>
-              <span class="price">1,500,000 تومان</span>
-              <div class="product-actions">
-                <button class="add-to-cart"><i class="fas fa-cart-plus"></i> افزودن</button>
-                <button class="quick-view"><i class="fas fa-eye"></i> مشاهده</button>
+          <!-- تکرار برای محصولات دیگر با تغییرات category -->
+          <div class="product-card bg-white/35 backdrop-blur-[10px] rounded-2xl p-8 text-center border border-blue-500/40 transition-all duration-400 hover:translate-y-[-24px] hover:shadow-glass-hover dark:bg-gray-700/35 dark:border-blue-500/20" data-category="clothing">
+            <img src="files/laptop1.png" alt="محصول 2" class="w-full h-64 object-cover rounded-xl transition-transform duration-400 hover:scale-105" loading="lazy" />
+            <div class="product-info mt-6">
+              <h3 class="text-2xl font-medium text-blue-light dark:text-blue-light transition-colors duration-300">محصول 2</h3>
+              <span class="price block text-xl text-blue-warm font-semibold mt-4 dark:text-blue-light transition-colors duration-300">1,500,000 تومان</span>
+              <div class="product-actions flex gap-6 justify-center mt-6">
+                <button class="add-to-cart bg-gradient-to-br from-blue-warm to-blue-dark text-white p-3 px-6 rounded-3xl flex items-center gap-1.5 transition-all duration-400 hover:from-blue-dark hover:to-blue-700 hover:scale-106 hover:shadow-glass dark:from-blue-light dark:to-blue-600" data-product="2"><i class="fas fa-cart-plus"></i> افزودن</button>
+                <button class="quick-view bg-gradient-to-br from-blue-warm to-blue-dark text-white p-3 px-6 rounded-3xl flex items-center gap-1.5 transition-all duration-400 hover:from-blue-dark hover:to-blue-700 hover:scale-106 hover:shadow-glass dark:from-blue-light dark:to-blue-600"><i class="fas fa-eye"></i> مشاهده</button>
+              </div>
+              <div class="category-info flex items-center justify-end gap-1.5 text-blue-dark text-base mt-4 opacity-90 dark:text-blue-light transition-colors duration-300">
+                <i class="fas fa-tshirt text-xl text-blue-warm dark:text-blue-light"></i>
+                <span>پوشاک: مد روز</span>
               </div>
             </div>
           </div>
-          <div class="product-card">
-            <img src="files/laptop1.png" alt="محصول 3" loading="lazy" />
-            <div class="product-info">
-              <h3>محصول 3</h3>
-              <span class="price">900,000 تومان</span>
-              <div class="product-actions">
-                <button class="add-to-cart"><i class="fas fa-cart-plus"></i> افزودن</button>
-                <button class="quick-view"><i class="fas fa-eye"></i> مشاهده</button>
+          <div class="product-card bg-white/35 backdrop-blur-[10px] rounded-2xl p-8 text-center border border-blue-500/40 transition-all duration-400 hover:translate-y-[-24px] hover:shadow-glass-hover dark:bg-gray-700/35 dark:border-blue-500/20" data-category="home">
+            <img src="files/laptop1.png" alt="محصول 3" class="w-full h-64 object-cover rounded-xl transition-transform duration-400 hover:scale-105" loading="lazy" />
+            <div class="product-info mt-6">
+              <h3 class="text-2xl font-medium text-blue-light dark:text-blue-light transition-colors duration-300">محصول 3</h3>
+              <span class="price block text-xl text-blue-warm font-semibold mt-4 dark:text-blue-light transition-colors duration-300">900,000 تومان</span>
+              <div class="product-actions flex gap-6 justify-center mt-6">
+                <button class="add-to-cart bg-gradient-to-br from-blue-warm to-blue-dark text-white p-3 px-6 rounded-3xl flex items-center gap-1.5 transition-all duration-400 hover:from-blue-dark hover:to-blue-700 hover:scale-106 hover:shadow-glass dark:from-blue-light dark:to-blue-600" data-product="3"><i class="fas fa-cart-plus"></i> افزودن</button>
+                <button class="quick-view bg-gradient-to-br from-blue-warm to-blue-dark text-white p-3 px-6 rounded-3xl flex items-center gap-1.5 transition-all duration-400 hover:from-blue-dark hover:to-blue-700 hover:scale-106 hover:shadow-glass dark:from-blue-light dark:to-blue-600"><i class="fas fa-eye"></i> مشاهده</button>
+              </div>
+              <div class="category-info flex items-center justify-end gap-1.5 text-blue-dark text-base mt-4 opacity-90 dark:text-blue-light transition-colors duration-300">
+                <i class="fas fa-couch text-xl text-blue-warm dark:text-blue-light"></i>
+                <span>خانه: لوازم کاربردی</span>
               </div>
             </div>
           </div>
-          <div class="product-card">
-            <img src="files/laptop1.png" alt="محصول 4" loading="lazy" />
-            <div class="product-info">
-              <h3>محصول 4</h3>
-              <span class="price">2,000,000 تومان</span>
-              <div class="product-actions">
-                <button class="add-to-cart"><i class="fas fa-cart-plus"></i> افزودن</button>
-                <button class="quick-view"><i class="fas fa-eye"></i> مشاهده</button>
+          <div class="product-card bg-white/35 backdrop-blur-[10px] rounded-2xl p-8 text-center border border-blue-500/40 transition-all duration-400 hover:translate-y-[-24px] hover:shadow-glass-hover dark:bg-gray-700/35 dark:border-blue-500/20" data-category="sports">
+            <img src="files/laptop1.png" alt="محصول 4" class="w-full h-64 object-cover rounded-xl transition-transform duration-400 hover:scale-105" loading="lazy" />
+            <div class="product-info mt-6">
+              <h3 class="text-2xl font-medium text-blue-light dark:text-blue-light transition-colors duration-300">محصول 4</h3>
+              <span class="price block text-xl text-blue-warm font-semibold mt-4 dark:text-blue-light transition-colors duration-300">2,000,000 تومان</span>
+              <div class="product-actions flex gap-6 justify-center mt-6">
+                <button class="add-to-cart bg-gradient-to-br from-blue-warm to-blue-dark text-white p-3 px-6 rounded-3xl flex items-center gap-1.5 transition-all duration-400 hover:from-blue-dark hover:to-blue-700 hover:scale-106 hover:shadow-glass dark:from-blue-light dark:to-blue-600" data-product="4"><i class="fas fa-cart-plus"></i> افزودن</button>
+                <button class="quick-view bg-gradient-to-br from-blue-warm to-blue-dark text-white p-3 px-6 rounded-3xl flex items-center gap-1.5 transition-all duration-400 hover:from-blue-dark hover:to-blue-700 hover:scale-106 hover:shadow-glass dark:from-blue-light dark:to-blue-600"><i class="fas fa-eye"></i> مشاهده</button>
+              </div>
+              <div class="category-info flex items-center justify-end gap-1.5 text-blue-dark text-base mt-4 opacity-90 dark:text-blue-light transition-colors duration-300">
+                <i class="fas fa-dumbbell text-xl text-blue-warm dark:text-blue-light"></i>
+                <span>ورزش: تجهیزات حرفه‌ای</span>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- بخش‌های دیگر (محصولات جدید، پرفروش، نظرات، سوالات، تماس، اخبار) با ساختار مشابه -->
     </main>
-    <footer>
-      <p>© 2023</p>
+    <footer class="bg-blue-500/70 backdrop-blur-[10px] py-14 px-12 mt-20 dark:bg-gray-800/70">
+      <div class="footer-content max-w-7xl mx-auto grid grid-cols-3 gap-12 mb-10">
+        <div class="footer-section text-center">
+          <h3 class="text-3xl font-medium text-white mb-6 text-shadow-md dark:text-gray-200 transition-colors duration-300">لینک‌های مفید</h3>
+          <ul class="list-none">
+            <li class="mb-4"><a href="#" class="text-blue-light text-xl transition-colors duration-400 hover:text-blue-warm dark:text-blue-light dark:hover:text-blue-light">درباره ما</a></li>
+            <li class="mb-4"><a href="#" class="text-blue-light text-xl transition-colors duration-400 hover:text-blue-warm dark:text-blue-light dark:hover:text-blue-light">سیاست حریم خصوصی</a></li>
+            <li><a href="#" class="text-blue-light text-xl transition-colors duration-400 hover:text-blue-warm dark:text-blue-light dark:hover:text-blue-light">شرایط استفاده</a></li>
+          </ul>
+        </div>
+        <div class="footer-section text-center">
+          <h3 class="text-3xl font-medium text-white mb-6 text-shadow-md dark:text-gray-200 transition-colors duration-300">تماس با ما</h3>
+          <p class="text-white text-xl mb-2 dark:text-gray-200 transition-colors duration-300">تلفن: 021-12345678</p>
+          <p class="text-white text-xl dark:text-gray-200 transition-colors duration-300">ایمیل: info@example.com</p>
+        </div>
+        <div class="footer-section text-center">
+          <h3 class="text-3xl font-medium text-white mb-6 text-shadow-md dark:text-gray-200 transition-colors duration-300">شبکه‌های اجتماعی</h3>
+          <div class="social-links flex gap-4.5 justify-center mt-6">
+            <a href="#" class="social-icon text-white text-3xl transition-all duration-400 hover:text-blue-light dark:text-gray-200 dark:hover:text-blue-light"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon text-white text-3xl transition-all duration-400 hover:text-blue-light dark:text-gray-200 dark:hover:text-blue-light"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon text-white text-3xl transition-all duration-400 hover:text-blue-light dark:text-gray-200 dark:hover:text-blue-light"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <p class="footer-bottom text-center text-white text-lg opacity-90 dark:text-gray-200 transition-colors duration-300">© 2023 - کلیه حقوق محفوظ است</p>
     </footer>
+    <div class="cart-popup fixed top-0 left-0 w-full h-full bg-black/50 z-50 hidden" id="cartPopup">
+      <div class="cart-content bg-white/35 backdrop-blur-[10px] rounded-2xl p-8 w-[450px] max-w-[90%] mx-auto mt-15 border border-blue-500/40 shadow-glass dark:bg-gray-700/35 dark:border-blue-500/20">
+        <h3 class="text-3xl font-medium text-blue-dark mb-6 dark:text-blue-light transition-colors duration-300">سبد خرید</h3>
+        <ul class="cart-items list-none mb-8 max-h-64 overflow-y-auto">
+          <!-- آیتم‌های سبد خرید اینجا اضافه می‌شوند -->
+        </ul>
+        <button class="close-cart bg-blue-500/70 text-white p-3 px-6 rounded-3xl transition-all duration-400 hover:bg-blue-dark hover:scale-106 dark:bg-blue-light dark:hover:bg-blue-600" id="closeCart">بستن</button>
+        <a href="#" class="checkout-btn bg-blue-warm text-white p-3 px-6 rounded-3xl ml-4 transition-all duration-400 hover:bg-blue-dark hover:scale-106 dark:bg-blue-light dark:hover:bg-blue-600">پرداخت</a>
+      </div>
+    </div>
+    <div class="notification fixed top-10 left-1/2 transform -translate-x-1/2 bg-blue-500/90 text-white p-5 rounded-2xl z-50 hidden transition-opacity duration-600 dark:bg-blue-500/70" id="notification"></div>
+    <button class="back-to-top fixed bottom-10 right-10 bg-blue-warm text-white p-4 px-6 rounded-3xl cursor-pointer hidden transition-all duration-400 hover:bg-blue-dark hover:scale-106 dark:bg-blue-light dark:hover:bg-blue-600" id="backToTop"><i class="fas fa-arrow-up"></i></button>
     <script src="script.js"></script>
   </body>
 </html>
